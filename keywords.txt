@@ -1,0 +1,12 @@
+# Syntax Coloring Map For DEVRANDOM
+
+# Datatypes (KEYWORD1)
+DEVRANDOM	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
+
+
