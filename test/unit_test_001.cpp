@@ -64,10 +64,11 @@ unittest(test_generator_mode)
 
   assertEqual(1, dr.available());
 
-  fprintf(stderr, "peak == read test");
+  fprintf(stderr, "peak == read test\n");
   for (int i = 0; i < 10; i++)
   {
     int n = dr.peek();
+    fprintf(stderr,"\t%d\t%d\n", i, n);
     assertEqual(n, dr.read());
   }
 
