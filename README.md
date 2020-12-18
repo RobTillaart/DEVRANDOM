@@ -3,8 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/DEVRANDOM/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/RobTillaart/DEVRANDOM.svg?maxAge=3600)](https://github.com/RobTillaart/DEVRANDOM/releases)
 
-
-
 # DEVRANDOM
 
 Arduino library to wrap a random generator in a stream

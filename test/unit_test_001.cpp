@@ -47,10 +47,10 @@ unittest(test_constructor)
   
   assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
   
-  dr.useHW();
+  dr.useHW(4);
   assertEqual(DEVRANDOM_MODE_HW, dr.getMode());
   
-  dr.useAR();
+  dr.useAR(0);
   assertEqual(DEVRANDOM_MODE_AR, dr.getMode());
   
   dr.useSW();
