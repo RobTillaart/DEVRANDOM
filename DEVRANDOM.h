@@ -2,14 +2,20 @@
 //
 //    FILE: DEVRANDOM.h
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.0
+// VERSION: 0.1.1
 // PURPOSE: Arduino library for a /dev/random stream - usefull for testing
 //     URL: https://github.com/RobTillaart/DEVRANDOM
 //
 // HISTORY:
-// 0.1.0    2020-06-23 initial version
+// 0.1.0    2020-06-23  initial version
+// 0.1.1    2020-12-18  add arduino-ci + unit tests
+//                      + getMode() + flush()
 
 #include "Arduino.h"
+
+#define  DEVRANDOM_MODE_SW      0
+#define  DEVRANDOM_MODE_HW      1
+#define  DEVRANDOM_MODE_AR      2
 
 class DEVRANDOM : public Stream
 {
@@ -23,7 +29,7 @@ public:
   };
 
   int available() { return 1; };
-  
+
   int peek()      { return _next; };
   int read()      
   {
@@ -31,6 +37,9 @@ public:
     _next = _rnd();
     return x;
   };
+
+  // keep CI happy as parent class flush is virtual.
+  void flush() {};  
 
   size_t write(const uint8_t data)
   {
@@ -42,6 +51,8 @@ public:
   void useAR(uint8_t pin) { _mode = 2; _pin = pin; };
   void useHW(uint8_t pin) { _mode = 1; _pin = pin; pinMode(_pin, INPUT); };
   void useSW()            { _mode = 0; };
+
+  uint8_t getMode() { return _mode; };
 
 private:
   uint8_t  _next;
@@ -63,7 +74,8 @@ private:
     for (uint8_t i = 0; i < 8; i++)
     {
       val <<= 1;
-      if (digitalRead(_pin)) val++;  // TODO register optimized reading for speed?
+      // TODO register optimized read for speed? ==> Not portable
+      if (digitalRead(_pin)) val++;  
     }
     return val ^ _seed;
   }
