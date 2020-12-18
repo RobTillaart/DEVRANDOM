@@ -70,15 +70,7 @@ unittest(test_generator_mode)
     int n = dr.peek();
     assertEqual(n, dr.read());
   }
-  
-  dr.useHW();
-  assertEqual(DEVRANDOM_MODE_HW, dr.getMode());
-  
-  dr.useAR();
-  assertEqual(DEVRANDOM_MODE_AR, dr.getMode());
-  
-  dr.useSW();
-  assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
+
 }
 
 unittest_main()
