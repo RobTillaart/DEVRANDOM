@@ -30,17 +30,17 @@ does have some effect);
 - **useSW()** use a software random number generator. This is the default.
 By default the build-in random number generator is used. 
 This can be replaced by a RNG of your choice. 
-
 - **useHW(pin)** use digitalRead to read 8 bits from a defined pin.
 One can build a hardware RNG that flips between 0 and 1 very rapidly and unpredictably.
 Connect this signal to the pin and it will be read and generate a random byte.
 The seed value from the write is used as an XOR byte.
-
 - **useAR(pin)** use the analogRead to read 8 bits
 This can be fed with an analog noise source.
 The seed value from the write is used as a XOR byte.
+- **getMode()** returns the source of randomness => 0=SW, 1=HW, 2=AR (see above).
 
-As **write()** reseeds the RNG, printing to **DEVRANDOM** will also reseed the RNG. E.g. **dr.println("Hello world");** would reseed it too.
+As **write()** reseeds the RNG, printing to **DEVRANDOM** will also reseed the RNG. 
+E.g. **dr.println("Hello world");** would reseed it too.
 
 ## Operation
 

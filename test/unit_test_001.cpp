@@ -32,14 +32,15 @@
 #include "DEVRANDOM.h"
 
 
-
 unittest_setup()
 {
 }
 
+
 unittest_teardown()
 {
 }
+
 
 unittest(test_constructor)
 {
@@ -71,7 +72,6 @@ unittest(test_generator_mode)
     fprintf(stderr,"\t%d\t%d\n", i, n);
     assertEqual(n, dr.read());
   }
-
 }
 
 unittest_main()
