@@ -61,10 +61,10 @@ unittest(test_constructor_seed)
   DEVRANDOM dr_str("hello world");
   assertEqual(DEVRANDOM_MODE_SW, dr_str.getMode());
 
-  DEVRANDOM dr_int(123456789);
+  DEVRANDOM dr_int((uint32_t)123456789);
   assertEqual(DEVRANDOM_MODE_SW, dr_int.getMode());
 
-  DEVRANDOM dr_float(PI);
+  DEVRANDOM dr_float((float)PI);
   assertEqual(DEVRANDOM_MODE_SW, dr_float.getMode());
 
 }
