@@ -16,7 +16,7 @@
 #include "Arduino.h"
 
 
-#define  DEVRANDOM_LIB_VERSION      (F("0.1.2))
+#define  DEVRANDOM_LIB_VERSION      (F("0.1.2"))
 
 
 #define  DEVRANDOM_MODE_SW           0
