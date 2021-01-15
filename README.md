@@ -7,16 +7,26 @@
 
 Arduino library to wrap a random generator in a stream
 
+
 ## Description
 
 The library implements a stream class that mimics the /dev/random
 device of a linux system. It can be used for testing with streams.
 
+
 ## Interface
 
-### Stream interface
+### Constructor
 
 - **DEVRANDOM()** Constructor
+- **DEVRANDOM(char \* str)** Constructor
+- **DEVRANDOM(uint32_t val)** Constructor
+- **DEVRANDOM(float val)** Constructor
+
+### Streeam interface
+
+to read and to reseed the random generator.
+
 - **available()** There is always 1 next byte available
 - **peek()** will give you next byte
 - **read()** will give you next byte and generate a new one.
@@ -24,6 +34,7 @@ device of a linux system. It can be used for testing with streams.
 (SW mode only, in HW mode and AN mode the seed is used to XOR the value, so it
 does have some effect);
 - **flush()** to keep the CI happy.
+
 
 ### Random generator selection
 
@@ -42,19 +53,22 @@ The seed value from the write is used as a XOR byte.
 As **write()** reseeds the RNG, printing to **DEVRANDOM** will also reseed the RNG. 
 E.g. **dr.println("Hello world");** would reseed it too.
 
+
 ## Operation
 
-See example
+See example sketches.
+
 
 ### Example
 
 As shown in the example one can use fscanf to read larger datatypes, 
 
 ```cpp
+  DEVRANDOM dr;
   uint32_t x;
   fscanf((FILE*) &dr, "%lu", &x);
   Serial.println(x);
 ```
-However float is not supported by UNO and strings (%s) generate garbage.
+However float is not supported standard in the fscanf by UNO and strings (%s) generate garbage.
 So a password generator is a bit more difficult (and a good exercise).
 

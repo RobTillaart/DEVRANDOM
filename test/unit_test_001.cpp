@@ -44,6 +44,8 @@ unittest_teardown()
 
 unittest(test_constructor)
 {
+  fprintf(stderr, "VERSION: %s\n", DEVRANDOM_LIB_VERSION);
+
   DEVRANDOM dr;
   
   assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
@@ -56,6 +58,20 @@ unittest(test_constructor)
   
   dr.useSW();
   assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
+}
+
+
+unittest(test_constructor)
+{
+  DEVRANDOM dr_str("hello world");
+  assertEqual(DEVRANDOM_MODE_SW, dr_str.getMode());
+
+  DEVRANDOM dr_int(123456789);
+  assertEqual(DEVRANDOM_MODE_SW, dr_int.getMode());
+
+  DEVRANDOM dr_float(PI);
+  assertEqual(DEVRANDOM_MODE_SW, dr_float.getMode());
+
 }
 
 
