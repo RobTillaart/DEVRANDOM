@@ -56,7 +56,7 @@ unittest(test_constructor)
 }
 
 
-unittest(test_constructor)
+unittest(test_constructor_seed)
 {
   DEVRANDOM dr_str("hello world");
   assertEqual(DEVRANDOM_MODE_SW, dr_str.getMode());
