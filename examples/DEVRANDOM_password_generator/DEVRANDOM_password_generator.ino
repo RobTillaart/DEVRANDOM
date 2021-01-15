@@ -11,9 +11,12 @@
 // a hardware random noise generator to have some level of quality
 // this example is merely a proof of concept.
 
+
 #include "DEVRANDOM.h"
 
+
 #define PASSWORD_SIZE 8
+
 
 char pw[PASSWORD_SIZE + 1];
 

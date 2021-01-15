@@ -23,11 +23,6 @@
 
 #include <ArduinoUnitTests.h>
 
-#define assertEqualFloat(arg1, arg2, arg3)  assertOp("assertEqualFloat", "expected", fabs(arg1 - arg2), compareLessOrEqual, "<=", "actual", arg3)
-#define assertEqualINF(arg)  assertOp("assertEqualINF", "expected", INFINITY, compareEqual, "==", "actual", arg)
-#define assertEqualNAN(arg)  assertOp("assertEqualNAN", "expected", true, compareEqual, "==", "actual", isnan(arg))
-
-
 #include "Arduino.h"
 #include "DEVRANDOM.h"
 
@@ -44,6 +39,8 @@ unittest_teardown()
 
 unittest(test_constructor)
 {
+  fprintf(stderr, "VERSION: %s\n", DEVRANDOM_LIB_VERSION);
+
   DEVRANDOM dr;
   
   assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
@@ -56,6 +53,20 @@ unittest(test_constructor)
   
   dr.useSW();
   assertEqual(DEVRANDOM_MODE_SW, dr.getMode());
+}
+
+
+unittest(test_constructor_seed)
+{
+  DEVRANDOM dr_str("hello world");
+  assertEqual(DEVRANDOM_MODE_SW, dr_str.getMode());
+
+  DEVRANDOM dr_int((uint32_t)123456789);
+  assertEqual(DEVRANDOM_MODE_SW, dr_int.getMode());
+
+  DEVRANDOM dr_float((float)PI);
+  assertEqual(DEVRANDOM_MODE_SW, dr_float.getMode());
+
 }
 
 
