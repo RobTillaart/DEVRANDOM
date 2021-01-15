@@ -37,7 +37,7 @@ public:
 
   DEVRANDOM(const char * str)
   {
-    this.print(str);
+    this->print(str);
     _next = random(256);
     _mode = 0;
     _pin = 0;
@@ -45,7 +45,7 @@ public:
 
   DEVRANDOM(const uint32_t val)
   {
-     this.print(val);
+     this->print(val);
     _next = random(256);
     _mode = 0;
     _pin = 0;
@@ -53,7 +53,7 @@ public:
 
   DEVRANDOM(const float val)
   {
-    this.print(val);
+    this->print(val, 6);
     _next = random(256);
     _mode = 0;
     _pin = 0;
