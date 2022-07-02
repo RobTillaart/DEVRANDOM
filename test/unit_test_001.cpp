@@ -89,7 +89,7 @@ unittest(test_read)
   fprintf(stderr, "read() >= 0test\n");
   for (int i = 0; i < 10; i++)
   {
-    assertMoreOrEqual(0, dr.read());
+    assertLessOrEqual(0, dr.read());
   }
 }
 
