@@ -33,7 +33,7 @@ public:
   int     read();
   //  keep CI happy as parent class flush is virtual.
   void    flush();
-  //  for reseeding, incl via print() and println().
+  //  for reseeding, including via print() and println().
   size_t  write(const uint8_t data);
   size_t  write(const uint8_t * buffer, size_t size);
   

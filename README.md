@@ -54,7 +54,6 @@ this might be a good trade off.
 ### Random generator selection
 
 - **void useRandom()** use the build in software random number generator. This is the default.
-By default the build-in random number generator is used. 
 This can be replaced by a RNG of your choice. 
 - **void useDigitalRead(uint8_t pin)** use digitalRead to read 8 bits from a defined pin.
 One can build a hardware RNG that flips between 0 and 1 very rapidly and unpredictably.
@@ -111,5 +110,8 @@ So a password generator is a bit more difficult (and a good exercise).
 - improve documentation.
 - add examples.
 - add other (portable) PRNG.
-
+- **available()** returns 1, 
+  - should that be more e.g. INT_MAX
+  - a random number > 0 ?
+  - ?
 
