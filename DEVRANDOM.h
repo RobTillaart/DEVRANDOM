@@ -36,11 +36,6 @@ public:
   //  for reseeding, including via print() and println().
   size_t  write(const uint8_t data);
   size_t  write(const uint8_t * buffer, size_t size);
-  
-  //  will be obsolete in future
-  void    useAR(uint8_t pin) { useAnalogRead(pin);  };
-  void    useHW(uint8_t pin) { useDigitalRead(pin); };
-  void    useSW()            { useRandom();         };
 
   //      build in random is the default mode.
   void    useRandom();
@@ -49,6 +44,12 @@ public:
   void    useMarsaglia();
 
   uint8_t getMode();
+
+
+  //  will be obsolete in future
+  void    useAR(uint8_t pin) { useAnalogRead(pin);  };
+  void    useHW(uint8_t pin) { useDigitalRead(pin); };
+  void    useSW()            { useRandom();         };
 
 
 private:

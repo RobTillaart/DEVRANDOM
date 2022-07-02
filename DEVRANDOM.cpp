@@ -70,7 +70,9 @@ int DEVRANDOM::read()
 
 
 // keep CI happy as parent class flush is virtual.
-void DEVRANDOM::flush() {};
+void DEVRANDOM::flush()
+{
+};
 
 
 size_t DEVRANDOM::write(const uint8_t data)
@@ -90,7 +92,7 @@ size_t DEVRANDOM::write(const uint8_t * buffer, size_t size)
   {
     randomSeed(_seed);
   }
-  if (_mode == 3) 
+  if (_mode == 3)
   {
     _m_z = (_seed == 0) ? 1 : _seed;
     _m_w = ( tmp  == 0) ? 2 : tmp;

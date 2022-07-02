@@ -94,9 +94,26 @@ unittest(test_read)
 }
 
 
-unittest(test_generator_mode)
+unittest(test_generator_mode_random)
 {
   DEVRANDOM dr;
+
+  assertEqual(1, dr.available());
+
+  fprintf(stderr, "peek() == read() test\n");
+  for (int i = 0; i < 10; i++)
+  {
+    int n = dr.peek();
+    fprintf(stderr,"\t%d\t%d\n", i, n);
+    assertEqual(n, dr.read());
+  }
+}
+
+
+unittest(test_generator_mode_Marsaglia)
+{
+  DEVRANDOM dr;
+  dr.useMarsaglia();
 
   assertEqual(1, dr.available());
 

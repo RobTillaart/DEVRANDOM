@@ -114,4 +114,7 @@ So a password generator is a bit more difficult (and a good exercise).
   - should that be more e.g. INT_MAX
   - a random number > 0 ?
   - ?
-
+- when changing mode should \_next == **peek()** be reset?
+  - yes, think so ```_next = _rnd();```
+  - when already in that mode? (=> complex)
+  
