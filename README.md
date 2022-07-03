@@ -66,7 +66,7 @@ The seed value from the write is used as a XOR byte.
 This one is quite fast and good, and more important portable.
 - **uint8_t getMode()** returns the source of randomness.
 
-|  value  |  DEVRANDOM_MODE  | Type                  |
+|  Mode   |  DEVRANDOM_MODE  | Type                  |
 |:-------:|:----------------:|:----------------------|
 |    0    | build in random  | depends on platform
 |    1    | digitalRead      | hardware external
