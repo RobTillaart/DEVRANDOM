@@ -31,12 +31,12 @@ device of a Linux system. It can be used for testing with streams.
 
 To read and to reseed the random generator.
 
-- **int available()** There is always 1 next byte available
-- **int peek()** will give you next byte
+- **int available()** There is always 1 next byte available.
+- **int peek()** will give you next byte.
 - **int read()** will give you next byte and generate a new one.
 - **size_t write(uint8_t data)** data will be used for reseeding the random number generator (RNG), mode 0 and 3.
 In digitalRead and analogRead mode the seed is used to XOR
-the value, so it does have some effect;
+the value, so it does have some effect.
 - **size_t write(uint8_t \* buffer, size_t size)** speeds up reseeding 
 for some print / println calls.
 - **void flush()** to keep the CI happy.
@@ -53,8 +53,7 @@ this might be a good trade off.
 
 ### Random generator selection
 
-- **void useRandom()** use the build in software random number generator. This is the default.
-This can be replaced by a RNG of your choice. 
+- **void useRandom()** use the build in software random number generator. This is the default, but platform dependant.
 - **void useDigitalRead(uint8_t pin)** use digitalRead to read 8 bits from a defined pin.
 One can build a hardware RNG that flips between 0 and 1 very rapidly and unpredictably.
 Connect this signal to the pin and it will be read and generate a random byte.
@@ -74,12 +73,13 @@ This one is quite fast and good, and more important portable.
 |    3    | Marsaglia        | software portable PRNG
 
 
-There might be other RNG's in the future.
+There might be other RNG's in the future. 
+If you have an interesting and fast PRNG to be included please let me know. 
 
 
 ### Obsolete
 
-To be obsolete in some next release.
+To be obsolete in a next release.
 
 - **useSW()** replaced by **useRandom()**. 
 - **useHW(uint8_t pin)** replaced by **useDigitalRead()**.
