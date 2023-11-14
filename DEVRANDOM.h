@@ -18,6 +18,27 @@
 #define  DEVRANDOM_MODE_ANALOGREAD   2
 #define  DEVRANDOM_MODE_MARSAGLIA    3
 
+// TineMT constants
+#define MIN_LOOP 8
+#define PRE_LOOP 8
+#define TINYMT32_MEXP 127
+#define TINYMT32_SH0 1
+#define TINYMT32_SH1 10
+#define TINYMT32_SH8 8
+#define TINYMT32_MASK UINT32_C(0x7fffffff)
+#define TINYMT32_MUL (1.0f / 16777216.0f)
+
+/**
+ * tinymt32 internal state vector and parameters
+ */
+struct TINYMT32_T {
+    uint32_t status[4];
+    uint32_t mat1;
+    uint32_t mat2;
+    uint32_t tmat;
+};
+
+typedef struct TINYMT32_T tinymt32_t;
 
 class DEVRANDOM : public Stream
 {
@@ -27,9 +48,13 @@ public:
   DEVRANDOM(const uint32_t value);
   DEVRANDOM(const float value);
 
+  // Tiny Mersenne-Twister
+  tinymt32_t tinymt;
+
   int     available();
   int     peek();
   int     read();
+  uint32_t _tinymersennetwister();
 
   //      keep CI happy as parent class flush is virtual.
   void    flush();
@@ -37,12 +62,14 @@ public:
   //      for reseeding, including via print() and println().
   size_t  write(const uint8_t data);
   size_t  write(const uint8_t * buffer, size_t size);
+  size_t  write(const uint32_t * buffer, uint8_t size);
 
   //      build in random is the default mode.
   void    useRandom();
   void    useDigitalRead(uint8_t pin);
   void    useAnalogRead(uint8_t pin);
   void    useMarsaglia();
+  void    useTinyMersenneTwister();
 
   uint8_t getMode();
 
@@ -67,6 +94,10 @@ private:
   int      _digitalRead();
   int      _analogRead();
   uint32_t _marsaglia();
+  //uint32_t _tinymersennetwister();
+  void period_certification(tinymt32_t * random);
+  void tinymt32_next_state(tinymt32_t * random);
+  uint32_t tinymt32_temper(tinymt32_t * random);
 
 };
 
